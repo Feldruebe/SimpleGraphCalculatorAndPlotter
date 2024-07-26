@@ -82,7 +82,7 @@
         <None Include="App.config"/>
     </ItemGroup>
     <ItemGroup>
-      <Content Include="ReadMe.md" />
+      <Content Include="Analysis\ReadMe.md" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>
