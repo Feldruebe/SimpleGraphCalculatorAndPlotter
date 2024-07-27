@@ -68,7 +68,9 @@ namespace SimpleGraphCalculatorAndPlotterTests
             var exporterMock = new Mock<ISGCPExporter>();
             var testFileString = "TestFile";
 
-            var sut = new SGCPModel(plotterMock.Object, null, exporterMock.Object, () => testFileString)
+            var rendererMock = new Mock<ISGCPRenderer>();
+            
+            var sut = new SGCPModel(plotterMock.Object, rendererMock.Object, exporterMock.Object, () => testFileString)
             {
                 FunctionType = functionType,
                 A = a,

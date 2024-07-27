@@ -60,6 +60,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="SGCPModelTests.cs" />
+        <Compile Include="SGCPPlotterTests.cs" />
         <Compile Include="SGCPViewModelTests.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>

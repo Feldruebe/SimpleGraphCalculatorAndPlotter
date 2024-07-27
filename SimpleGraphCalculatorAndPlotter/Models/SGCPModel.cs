@@ -49,9 +49,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the A parameter.
-        /// </summary>
+        /// <inheritdoc />
         public double A
         {
             get => this.a;
@@ -64,9 +62,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the B parameter.
-        /// </summary>
+        /// <inheritdoc />
         public double B
         {
             get => this.b;
@@ -79,9 +75,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the C parameter.
-        /// </summary>
+        /// <inheritdoc />
         public double C
         {
             get => this.c;
@@ -94,9 +88,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the D parameter.
-        /// </summary>
+        /// <inheritdoc />
         public double D
         {
             get => this.d;
@@ -109,9 +101,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the minimum of the x-axis.
-        /// </summary>
+        /// <inheritdoc />
         public double MinX
         {
             get => this.minX;
@@ -124,9 +114,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the maximum of the x-axis.
-        /// </summary>
+        /// <inheritdoc />
         public double MaxX
         {
             get => this.maxX;
@@ -139,9 +127,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the minimum of the y-axis.
-        /// </summary>
+        /// <inheritdoc />
         public double MinY
         {
             get => this.minY;
@@ -154,9 +140,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the maximum of the y-axis.
-        /// </summary>
+        /// <inheritdoc />
         public double MaxY
         {
             get => this.maxY;
@@ -169,14 +153,10 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             }
         }
 
-        /// <summary>
-        /// Gets or sets the rendered image.
-        /// </summary>
+        /// <inheritdoc />
         public BitmapImage Image { get; set; }
 
-        /// <summary>
-        /// Saves the image of the currently parametrized function.
-        /// </summary>
+        /// <inheritdoc />
         public void SaveImage()
         {
             var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.MinX, this.MaxX, this.MinY, this.MaxY);

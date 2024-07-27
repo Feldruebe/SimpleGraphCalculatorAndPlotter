@@ -1,4 +1,5 @@
-﻿using SimpleGraphCalculatorAndPlotter.ViewModels;
+﻿using SimpleGraphCalculatorAndPlotter.Models;
+using SimpleGraphCalculatorAndPlotter.ViewModels;
 
 namespace SimpleGraphCalculatorAndPlotter
 {
@@ -13,7 +14,7 @@ namespace SimpleGraphCalculatorAndPlotter
         public MainWindow()
         {
             this.InitializeComponent();
-            this.DataContext = new SGCPViewModel(null);
+            this.DataContext = new SGCPViewModel(new SGCPModel(new SGCPPlotter(), new SGCPRenderer(),new SGCPExporter(), null));
         }
     }
 }
