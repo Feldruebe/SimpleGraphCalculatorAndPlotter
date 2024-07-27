@@ -16,9 +16,7 @@
         /// <param name="d">The parameter d.</param>
         /// <param name="minX">The minimum of the x-axis.</param>
         /// <param name="maxX">The maximum of the x-axis.</param>
-        /// <param name="minY">The minimum of the y-axis.</param>
-        /// <param name="maxY">The maximum of the y-axis.</param>
         /// <returns>The calculated coordinates.</returns>
-        (double X, double Y)[] Plot(FunctionType functionType, double a, double b, double c, double d, double minX, double maxX, double minY, double maxY);
+        (double X, double Y)[] Plot(FunctionType functionType, double a, double b, double c, double d, double minX, double maxX);
     }
 }

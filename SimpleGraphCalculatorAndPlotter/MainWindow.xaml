@@ -81,8 +81,6 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="6" />
-                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -98,8 +96,6 @@
                    Width="600"
                    Height="400" 
                    Source="/Analysis/Plot.png" />
-            <TextBox Grid.Row="0" Grid.Column="4" Width="20" Text="{Binding Model.MinY}" />
-            <TextBox Grid.Row="2" Grid.Column="4" Width="20" Text="{Binding Model.MaxY}" />
             <TextBox Grid.Row="4" Grid.Column="0" Width="20" Text="{Binding Model.MinX}" />
             <TextBox Grid.Row="4" Grid.Column="2" Width="20" Text="{Binding Model.MaxX}" />
         </Grid>

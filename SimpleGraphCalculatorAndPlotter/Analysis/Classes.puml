@@ -49,15 +49,13 @@ interface ISGCPModel
     +double D
     +double MinX
     +double MaxX
-    +double MinY
-    +double MaxY
     +Bitmap Image
 }
 
 interface ISGCPPlotter
 {
     +(double x, double y)[] Plot(FunctionType functionType, 
-    double a, double b, double c, double d,double minX, double maxX, double minY, double maxY))
+    double a, double b, double c, double d,double minX, double maxX))
 }
 
 interface ISGCPRenderer

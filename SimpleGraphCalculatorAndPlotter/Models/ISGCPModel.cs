@@ -45,16 +45,6 @@ namespace SimpleGraphCalculatorAndPlotter.Models
         double MaxX { get; set; }
 
         /// <summary>
-        /// Gets or sets the minimum of the y-axis.
-        /// </summary>
-        double MinY { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum of the y-axis.
-        /// </summary>
-        double MaxY { get; set; }
-
-        /// <summary>
         /// Gets or sets the rendered image.
         /// </summary>
         BitmapImage Image { get; set; }

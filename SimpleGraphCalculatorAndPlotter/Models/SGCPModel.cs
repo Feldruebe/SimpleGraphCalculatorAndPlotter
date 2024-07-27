@@ -18,8 +18,6 @@ namespace SimpleGraphCalculatorAndPlotter.Models
         private double d = 0;
         private double minX = -4;
         private double maxX = 4;
-        private double minY = -1;
-        private double maxY = 1;
         private ISGCPRenderer renderer;
         private FunctionType functionType;
 
@@ -128,45 +126,19 @@ namespace SimpleGraphCalculatorAndPlotter.Models
         }
 
         /// <inheritdoc />
-        public double MinY
-        {
-            get => this.minY;
-            set
-            {
-                if (this.SetField(ref this.minY, value))
-                {
-                    this.UpdateImage();
-                }
-            }
-        }
-
-        /// <inheritdoc />
-        public double MaxY
-        {
-            get => this.maxY;
-            set
-            {
-                if (this.SetField(ref this.maxY, value))
-                {
-                    this.UpdateImage();
-                }
-            }
-        }
-
-        /// <inheritdoc />
         public BitmapImage Image { get; set; }
 
         /// <inheritdoc />
         public void SaveImage()
         {
-            var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.MinX, this.MaxX, this.MinY, this.MaxY);
+            var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.MinX, this.MaxX);
             var fileName = this.getFileName();
             this.exporter.Export(fileName, coordinates);
         }
 
         private void UpdateImage()
         {
-            var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.MinX, this.MaxX, this.MinY, this.MaxY);
+            var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.MinX, this.MaxX);
             var image = this.renderer.Render(coordinates);
             this.Image = image;
         }

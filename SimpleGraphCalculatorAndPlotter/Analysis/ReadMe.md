@@ -24,8 +24,8 @@ When the user modifies the parameters a second visualization is shown in the sam
 It is drawn as a simple red line.
 - **_<span style="color:red">TODO</span>_**: color / style of default function and modified function
 
-The visualizations are plotted in a 2d coordinate system below the functions and parameters. The ranges for the x- and y-axis can be adjusted by the user
-using 4 text boxes places at the respective corners of the coordinate system.
+The visualizations are plotted in a 2d coordinate system below the functions and parameters. The range for the x-axis can be adjusted by the user
+using 2 text boxes placed at the respective corners of the coordinate system.
 
 When the application is closed the last parameters should be saved to the user settings and are reused with the next application start.
 - **_<span style="color:red">TODO</span>_**: default / start values

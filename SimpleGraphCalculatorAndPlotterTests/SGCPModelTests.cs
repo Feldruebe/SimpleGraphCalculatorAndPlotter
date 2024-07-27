@@ -20,8 +20,6 @@ namespace SimpleGraphCalculatorAndPlotterTests
                 It.IsAny<double>(),
                 It.IsAny<double>(),
                 It.IsAny<double>(),
-                It.IsAny<double>(),
-                It.IsAny<double>(),
                 It.IsAny<double>())).Returns(coordinates);
 
             var rendererMock = new Mock<ISGCPRenderer>();
@@ -48,23 +46,21 @@ namespace SimpleGraphCalculatorAndPlotterTests
                 It.IsAny<double>(),
                 It.IsAny<double>(),
                 It.IsAny<double>(),
-                It.IsAny<double>(),
-                It.IsAny<double>(),
                 It.IsAny<double>()), Times.Exactly(9));
             rendererMock.Verify(mock => mock.Render(coordinates), Times.Exactly(9));
             Assert.That(sut.Image == bitmapImage);
         }
 
         [Test]
-        [TestCase(FunctionType.Sin, 1, 2, 3, 4, 5, 6, 7, 8)]
-        [TestCase(FunctionType.Cos, -1, -2, -3, -4, -5, -6, -7, -8)]
-        [TestCase(FunctionType.Sinc, 0, 0, 0, 0, 0, 0, 0, 0)]
-        public void SaveImageCallsPlotterAndExportWithParameters(FunctionType functionType, double a, double b, double c, double d, double minX, double maxX, double minY, double maxY)
+        [TestCase(FunctionType.Sin, 1, 2, 3, 4, 5, 6)]
+        [TestCase(FunctionType.Cos, -1, -2, -3, -4, -5, -6)]
+        [TestCase(FunctionType.Sinc, 0, 0, 0, 0, 0, 0)]
+        public void SaveImageCallsPlotterAndExportWithParameters(FunctionType functionType, double a, double b, double c, double d, double minX, double maxX)
         {
             // Arrange
             var plotterMock = new Mock<ISGCPPlotter>();
             var coordinates = new[] { (1.0, 1.0), (2.0, 2.0), (3.0, 3.0) };
-            plotterMock.Setup(mock => mock.Plot(functionType, a, b, c, d, minX, maxX, minY, maxY)).Returns(coordinates);
+            plotterMock.Setup(mock => mock.Plot(functionType, a, b, c, d, minX, maxX)).Returns(coordinates);
             var exporterMock = new Mock<ISGCPExporter>();
             var testFileString = "TestFile";
 
@@ -79,8 +75,6 @@ namespace SimpleGraphCalculatorAndPlotterTests
                 D = d,
                 MinX = minX,
                 MaxX = maxX,
-                MinY = minY,
-                MaxY = maxY
             };
 
             plotterMock.Invocations.Clear();
@@ -89,7 +83,7 @@ namespace SimpleGraphCalculatorAndPlotterTests
             sut.SaveImage();
 
             // Assert
-            plotterMock.Verify(mock => mock.Plot(functionType, a, b, c, d, minX, maxX, minY, maxY), Times.Once());
+            plotterMock.Verify(mock => mock.Plot(functionType, a, b, c, d, minX, maxX), Times.Once());
             exporterMock.Verify(mock => mock.Export(testFileString, coordinates), Times.Once());
         }
     }
