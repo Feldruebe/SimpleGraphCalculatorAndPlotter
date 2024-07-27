@@ -1,0 +1,75 @@
+﻿@startuml
+'https://plantuml.com/de/class-diagram
+
+title SimpleGraphCalculatorAndPlotter
+
+interface ISGCPModel
+interface ISGCPPlotter
+interface ISGCPRenderer
+interface ISGCPExporter
+
+SGCPModel <|-- ISGCPModel
+SGCPPlotter <|-- ISGCPPlotter
+SGCPRenderer <|-- ISGCPRenderer
+SGCPExporter <|-- ISGCPExporter
+
+SGCPViewModel *-- SGCPModel
+SGCPModel *-- SGCPPlotter
+SGCPModel *-- SGCPRenderer
+SGCPModel *-- SGCPExporter
+
+enum FunctionType 
+{
+    Sin
+    Cos
+    Sinc
+}
+
+class SGCPViewModel
+{
+    +ICommand SaveCommand
+    +string FunctionString
+    +ISGCPModel Model
+}
+
+class SGCPModel
+{
+    +void SaveImage
+    -ISGCPPlotter plotter
+    -ISGCPRenderer renderer
+    -ISGCPExporter exporter
+}
+
+interface ISGCPModel
+{
+    +FunctionType FunctionType
+    +float ParameterA
+    +float ParameterB
+    +float ParameterC
+    +float ParameterD
+    +float MinX
+    +float MaxX
+    +float MinY
+    +float MaxY
+    +Bitmap Image
+}
+
+interface ISGCPPlotter
+{
+    +(float x, float y)[] Plot(FunctionType functionType, 
+    float a, float b, float c, float d,float minX, float maxX, float minY, float maxY))
+}
+
+interface ISGCPRenderer
+{
+    +int ImageWidth
+    +int ImageHeight
+    +Bitmap Render((float x, float y)[] coordinates)
+}
+
+interface ISGCPExporter
+{
+    +void Export(string filePath, (float x, float y)[] coordinates)
+}
+
+@enduml

@@ -1,0 +1,15 @@
+﻿@startuml
+'https://plantuml.com/sequence-diagram
+
+title Render
+
+autonumber
+
+ISGCPViewModel -> ISGCPModel: Changes (Parameters, Function, Axis)
+ISGCPModel --> ISGCPlotter: Plot
+ISGCPlotter --> ISGCPModel: Coordinates
+ISGCPModel --> ISGCRenderer: Render Coordinates
+ISGCPlotter --> ISGCPModel : Image
+ISGCPViewModel <-- ISGCPModel : Image
+
+@enduml

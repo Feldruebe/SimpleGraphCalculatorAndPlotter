@@ -37,8 +37,7 @@ the image is saved.
 
 MockUp:
 
-<img height="400" src="https://ars.els-cdn.com/content/image/3-s2.0-B978012407682200003X-f03-15-9780124076822.jpg" title="MockUp" width="600" />
-<!--- <img height="400" src="MockUp.png" title="MockUp" width="600"/> --->
+<img height="400" src="MockUp.png" title="MockUp" width="600"/>
 
 
 # Tasks
@@ -61,8 +60,8 @@ MockUp:
   - The plotter is configured with the settings that the user selected (function, parameters, axis)
   
 
-- Create draw interface
-  - The data points provided by the plotter should be drawn by a component and provided to the view to display it.
+- Create render interface
+  - The data points provided by the plotter should be rendered by a component and provided to the view to display it.
   - Look into [Skia](https://github.com/mono/SkiaSharp)
 
 
@@ -79,3 +78,30 @@ MockUp:
 To conclude the requirement analysis I would add the following in discussion with the development team:
   - A rough time estimation 
   - A risk / difficulty assessment
+
+# Software Concept
+
+## Classes
+The application is controlled from the SGCPModel.
+The model controls the 3 partial aspects plotting, rendering and exporting and is triggered ba the view model.
+For each aspect a component is injected that can be called to execute this aspect.
+
+The plotter is called with the parameters given by the user and returns the calculated coordinates as an array ob x and y values.
+
+The renderer is called with the calculated coordinates and returns the rendered image.
+
+<img src="Classes-SimpleGraphCalculatorAndPlotter.png"/>
+
+## Sequences
+### Render
+Rendering a new image is triggered by the view model by a parameter, function or axis change.
+The model then starts the plotting of new coordinates by calling the plotter component.
+After the coordinates are calculates the model passes these to the renderer.
+The renderer returns an image that is provided to the view.
+<img src="Render-Render.png"/>
+
+### Export
+Exporting a new image is triggered by the view model by the save command.
+The model is then called to save the image. This is done by calculating the coordinates with the plotter and the parameters.
+After the coordinates are calculates the model passes these to the exporter to save the image.
+<img src="Export-Export.png"/>

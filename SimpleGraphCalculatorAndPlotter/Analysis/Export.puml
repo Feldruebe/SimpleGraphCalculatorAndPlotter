@@ -1,0 +1,13 @@
+﻿@startuml
+'https://plantuml.com/sequence-diagram
+
+title Export
+
+autonumber
+--> ISGCPViewModel: SaveCommand
+ISGCPViewModel -> ISGCPModel: SaveImage
+ISGCPModel --> ISGCPPlotter: Plot
+ISGCPPlotter --> ISGCPModel: Coordinates
+ISGCPModel --> ISGCExporter: Save Image
+
+@enduml

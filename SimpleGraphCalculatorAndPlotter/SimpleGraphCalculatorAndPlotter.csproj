@@ -82,10 +82,13 @@
         <None Include="App.config"/>
     </ItemGroup>
     <ItemGroup>
+      <Content Include="Analysis\Export.puml" />
       <Content Include="Analysis\Plot.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="Analysis\ReadMe.md" />
+      <Content Include="Analysis\Classes.puml" />
+      <Content Include="Analysis\Render.puml" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>
