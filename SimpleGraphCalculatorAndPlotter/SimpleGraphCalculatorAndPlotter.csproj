@@ -82,6 +82,9 @@
         <None Include="App.config"/>
     </ItemGroup>
     <ItemGroup>
+      <Content Include="Analysis\Plot.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
       <Content Include="Analysis\ReadMe.md" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>

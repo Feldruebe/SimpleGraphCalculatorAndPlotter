@@ -34,3 +34,8 @@ The user has the possibility to save the plotted functions in a svg format by cl
 A save file dialog will open with the default file name of the function ("sin.svg", "cos.svg", "sinc.svg"). On confirming the save file dialog
 the image is saved.
 - **_<span style="color:red">TODO</span>_**: which format? (svg, eps, pdf etc.)
+
+MockUp:
+
+<img height="400" src="https://ars.els-cdn.com/content/image/3-s2.0-B978012407682200003X-f03-15-9780124076822.jpg" title="MockUp" width="600" />
+<!--- <img height="400" src="MockUp.png" title="MockUp" width="600"/> --->
