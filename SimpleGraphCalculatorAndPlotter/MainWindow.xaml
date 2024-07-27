@@ -23,6 +23,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="6" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
         <!-- Function -->
@@ -99,5 +101,6 @@
             <TextBox Grid.Row="4" Grid.Column="0" Text="300" />
             <TextBox Grid.Row="4" Grid.Column="2" Text="400" />
         </Grid>
+        <Button Grid.Row="14" HorizontalAlignment="Center" Content="Save Image" />
     </Grid>
 </Window>

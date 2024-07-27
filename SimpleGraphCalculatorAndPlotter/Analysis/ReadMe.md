@@ -30,14 +30,14 @@ using 4 text boxes places at the respective corners of the coordinate system.
 When the application is closed the last parameters should be saved to the user settings and are reused with the next application start.
 - **_<span style="color:red">TODO</span>_**: default / start values
 
-The user has the possibility to save the plotted functions in a svg format by clicking a button ("Save Image") on the bottom right.
+The user has the possibility to save the plotted functions in a svg format by clicking a button ("Save Image") on the bottom.
 A save file dialog will open with the default file name of the function ("sin.svg", "cos.svg", "sinc.svg"). On confirming the save file dialog
 the image is saved.
 - **_<span style="color:red">TODO</span>_**: which format? (svg, eps, pdf etc.)
 
 MockUp:
 
-<img height="400" src="MockUp.png" title="MockUp" width="600"/>
+<img src="MockUp.png" title="MockUp" />
 
 
 # Tasks
