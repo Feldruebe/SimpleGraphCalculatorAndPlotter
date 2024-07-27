@@ -34,7 +34,7 @@ class SGCPViewModel
 
 class SGCPModel
 {
-    +void SaveImage
+    +void SaveImage()
     -ISGCPPlotter plotter
     -ISGCPRenderer renderer
     -ISGCPExporter exporter
@@ -43,33 +43,33 @@ class SGCPModel
 interface ISGCPModel
 {
     +FunctionType FunctionType
-    +float ParameterA
-    +float ParameterB
-    +float ParameterC
-    +float ParameterD
-    +float MinX
-    +float MaxX
-    +float MinY
-    +float MaxY
+    +double A
+    +double B
+    +double C
+    +double D
+    +double MinX
+    +double MaxX
+    +double MinY
+    +double MaxY
     +Bitmap Image
 }
 
 interface ISGCPPlotter
 {
-    +(float x, float y)[] Plot(FunctionType functionType, 
-    float a, float b, float c, float d,float minX, float maxX, float minY, float maxY))
+    +(double x, double y)[] Plot(FunctionType functionType, 
+    double a, double b, double c, double d,double minX, double maxX, double minY, double maxY))
 }
 
 interface ISGCPRenderer
 {
     +int ImageWidth
     +int ImageHeight
-    +Bitmap Render((float x, float y)[] coordinates)
+    +Bitmap Render((double x, double y)[] coordinates)
 }
 
 interface ISGCPExporter
 {
-    +void Export(string filePath, (float x, float y)[] coordinates)
+    +void Export(string filePath, (double x, double y)[] coordinates)
 }
 
 @enduml
