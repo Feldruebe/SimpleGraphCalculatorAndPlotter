@@ -23,7 +23,7 @@ namespace SimpleGraphCalculatorAndPlotter.ViewModels
         /// <summary>
         /// The string that represents the sinc function.
         /// </summary>
-        public const string SincString = "sinc(x) = si(pi * x) = sin(pi * x) / x";
+        public const string SincString = "sinc(x): a * si(b * (pi * x - c)) = a * sin(b * (pi * x - c)) / (b * (pi * x - c)) + d";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SGCPViewModel"/> class.

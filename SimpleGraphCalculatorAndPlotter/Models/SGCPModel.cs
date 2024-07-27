@@ -12,14 +12,14 @@ namespace SimpleGraphCalculatorAndPlotter.Models
         private ISGCPPlotter plotter;
         private ISGCPExporter exporter;
         private Func<string> getFileName;
-        private double a;
-        private double b;
-        private double c;
-        private double d;
-        private double minX;
-        private double maxX;
-        private double minY;
-        private double maxY;
+        private double a = 1;
+        private double b = 1;
+        private double c = 0;
+        private double d = 0;
+        private double minX = -4;
+        private double maxX = 4;
+        private double minY = -1;
+        private double maxY = 1;
         private ISGCPRenderer renderer;
         private FunctionType functionType;
 

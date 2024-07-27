@@ -9,7 +9,7 @@ The user wants to modify the parameters of the trigonometric functions sin, cos 
 The functions and its parameters are displayed in the following form:
 - sin(x): a * sin(b * (x - c)) + d 
 - cos(x): a * cos(b * (x - c)) + d
-- sinc(x) = si(pi * x) = sin(pi * x) / x
+- sinc(x): a * si(b * (pi * x - c)) = a * sin(b * (pi * x - c)) / (b * (pi * x - c)) + d
 
 
 - **_<span style="color:red">TODO</span>_**: arbitrary parameters?

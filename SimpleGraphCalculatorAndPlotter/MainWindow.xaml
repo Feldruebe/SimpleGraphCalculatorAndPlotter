@@ -68,11 +68,11 @@
             <TextBlock Grid.Column="0" Text="a =" />
             <TextBox Grid.Column="2" Text="{Binding Model.A}" />
             <TextBlock Grid.Column="4" Text="b =" />
-            <TextBox Grid.Column="6" Text="{Binding Model.A}" />
+            <TextBox Grid.Column="6" Text="{Binding Model.B}" />
             <TextBlock Grid.Column="8" Text="c =" />
-            <TextBox Grid.Column="10" Text="{Binding Model.A}" />
+            <TextBox Grid.Column="10" Text="{Binding Model.C}" />
             <TextBlock Grid.Column="12" Text="d =" />
-            <TextBox Grid.Column="14" Text="{Binding Model.A}" />
+            <TextBox Grid.Column="14" Text="{Binding Model.D}" />
         </Grid>
         
         <!-- Plot -->
@@ -98,10 +98,10 @@
                    Width="600"
                    Height="400" 
                    Source="/Analysis/Plot.png" />
-            <TextBox Grid.Row="0" Grid.Column="4" Text="100" />
-            <TextBox Grid.Row="2" Grid.Column="4" Text="200" />
-            <TextBox Grid.Row="4" Grid.Column="0" Text="300" />
-            <TextBox Grid.Row="4" Grid.Column="2" Text="400" />
+            <TextBox Grid.Row="0" Grid.Column="4" Width="20" Text="{Binding Model.MinY}" />
+            <TextBox Grid.Row="2" Grid.Column="4" Width="20" Text="{Binding Model.MaxY}" />
+            <TextBox Grid.Row="4" Grid.Column="0" Width="20" Text="{Binding Model.MinX}" />
+            <TextBox Grid.Row="4" Grid.Column="2" Width="20" Text="{Binding Model.MaxX}" />
         </Grid>
         <Button Grid.Row="14" HorizontalAlignment="Center" Content="Save Image" />
     </Grid>
