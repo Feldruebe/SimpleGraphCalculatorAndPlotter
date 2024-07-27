@@ -30,14 +30,12 @@ namespace SimpleGraphCalculatorAndPlotterTests
 
             // Act
             sut.FunctionType = FunctionType.Cos;
-            sut.A = 1;
-            sut.B = 2;
-            sut.C = 3;
-            sut.D = 4;
-            sut.MinX = 5;
-            sut.MaxX = 6;
-            sut.MinY = 7;
-            sut.MaxY = 8;
+            sut.A = 10;
+            sut.B = 20;
+            sut.C = 30;
+            sut.D = 40;
+            sut.MinX = 50;
+            sut.MaxX = 60;
 
             // Assert
             plotterMock.Verify(mock => mock.Plot(It.IsAny<FunctionType>(),
@@ -46,8 +44,8 @@ namespace SimpleGraphCalculatorAndPlotterTests
                 It.IsAny<double>(),
                 It.IsAny<double>(),
                 It.IsAny<double>(),
-                It.IsAny<double>()), Times.Exactly(9));
-            rendererMock.Verify(mock => mock.Render(coordinates), Times.Exactly(9));
+                It.IsAny<double>()), Times.Exactly(7));
+            rendererMock.Verify(mock => mock.Render(coordinates), Times.Exactly(7));
             Assert.That(sut.Image == bitmapImage);
         }
 
