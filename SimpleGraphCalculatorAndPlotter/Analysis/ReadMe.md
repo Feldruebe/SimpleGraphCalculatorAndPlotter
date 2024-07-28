@@ -9,10 +9,10 @@ The user wants to modify the parameters of the trigonometric functions sin, cos 
 The functions and its parameters are displayed in the following form:
 - sin(x): a * sin(b * (x - c)) + d 
 - cos(x): a * cos(b * (x - c)) + d
-- sinc(x): a * si(b * (pi * x - c)) = a * sin(b * (pi * x - c)) / (b * (pi * x - c)) + d
+- sinc(x): a * si(b * (pi * x - c)) + d = a * sin(b * (pi * x - c)) / (b * (pi * x - c)) + d
 
-
-- **_<span style="color:red">TODO</span>_**: arbitrary parameters?
+- **_<span style="color:red">TODO</span>_**: Is sinc standardised or not?
+- **_<span style="color:red">TODO</span>_**: I am not sure if arbitrary parameters are meant, going on with Amplitude (a), Period (b), Phase Shift (c), Vertical Shift (d)
 
 The user can select one of them from 3 radio buttons and is shown a 2d visualization of the unmodified function.
 It is drawn in as simple black line. As default (first start) the sin function is selected. 
@@ -20,17 +20,17 @@ It is drawn in as simple black line. As default (first start) the sin function i
 
 Each parameter value is displayed in a text box below the function and can be modified.
 
-When the user modifies the parameters a second visualization is shown in the same coordinate system, reflecting the changes that the parameters introduced.
+The parametrized function is shown in the same coordinate system, reflecting the changes that the parameters introduced.
 It is drawn as a simple red line.
 - **_<span style="color:red">TODO</span>_**: color / style of default function and modified function
 
 The visualizations are plotted in a 2d coordinate system below the functions and parameters. The range for the x-axis can be adjusted by the user
-using 2 text boxes placed at the respective corners of the coordinate system.
+using a text box next to the parameters.
 
 When the application is closed the last parameters should be saved to the user settings and are reused with the next application start.
-- **_<span style="color:red">TODO</span>_**: default / start values
+- **_<span style="color:red">TODO</span>_**: default / start values (proposal a = 1, b = 1, c = 0, d = 0 )
 
-The user has the possibility to save the plotted functions in a svg format by clicking a button ("Save Image") on the bottom.
+The user has the possibility to save the plotted functions in a svg format by clicking a button ("Save Image") in the plot settings next to the parameters.
 A save file dialog will open with the default file name of the function ("sin.svg", "cos.svg", "sinc.svg"). On confirming the save file dialog
 the image is saved.
 - **_<span style="color:red">TODO</span>_**: which format? (svg, eps, pdf etc.)
@@ -38,7 +38,6 @@ the image is saved.
 MockUp:
 
 <img src="MockUp.png" title="MockUp" />
-
 
 # Tasks
 
@@ -86,9 +85,9 @@ The application is controlled from the SGCPModel.
 The model controls the 3 partial aspects plotting, rendering and exporting and is triggered ba the view model.
 For each aspect a component is injected that can be called to execute this aspect.
 
-The plotter is called with the parameters given by the user and returns the calculated coordinates as an array ob x and y values.
+The plotter is called with the parameters given by the user and returns the calculated coordinates as an array of x and y values.
 
-The renderer is called with the calculated coordinates and returns the rendered image.
+The renderer is called with the calculated coordinates for the default function and the parameterized function. It returns the rendered image.
 
 <img src="Classes-SimpleGraphCalculatorAndPlotter.png"/>
 
@@ -103,5 +102,5 @@ The renderer returns an image that is provided to the view.
 ### Export
 Exporting a new image is triggered by the view model by the save command.
 The model is then called to save the image. This is done by calculating the coordinates with the plotter and the parameters.
-After the coordinates are calculates the model passes these to the exporter to save the image.
+After the coordinates are calculated the model passes these to the exporter to save the image.
 <img src="Export-Export.png"/>

@@ -47,22 +47,21 @@ interface ISGCPModel
     +double B
     +double C
     +double D
-    +double MinX
-    +double MaxX
+    +double Range    
     +Bitmap Image
 }
 
 interface ISGCPPlotter
 {
     +(double x, double y)[] Plot(FunctionType functionType, 
-    double a, double b, double c, double d,double minX, double maxX))
+    double a, double b, double c, double d,double range))
 }
 
 interface ISGCPRenderer
 {
     +int ImageWidth
     +int ImageHeight
-    +Bitmap Render((double x, double y)[] coordinates)
+    +Bitmap Render((double x, double y)[] coordinates, (double x, double y)[] coordinatesDefaultFunction)
 }
 
 interface ISGCPExporter

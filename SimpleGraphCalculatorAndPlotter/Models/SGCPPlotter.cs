@@ -3,18 +3,23 @@ using System.Collections.Generic;
 
 namespace SimpleGraphCalculatorAndPlotter.Models
 {
+    /// <summary>
+    /// A simple plotter implementation.
+    /// </summary>
     public class SGCPPlotter : ISGCPPlotter
     {
+        /// <inheritdoc />
         public int Resolution { get; set; } = 100;
-        
-        public (double X, double Y)[] Plot(FunctionType functionType, double a, double b, double c, double d, double minX, double maxX)
+
+        /// <inheritdoc />
+        public (double X, double Y)[] Plot(FunctionType functionType, double a, double b, double c, double d, double range)
         {
             var result = new List<(double X, double Y)>();
-            var step = (maxX - minX) / this.Resolution;
+            var step = 2 * range / this.Resolution;
             
             void CalculateCoordinates(Func<double, double> function)
             {
-                for (double i = minX; i < maxX; i += step)
+                for (double i = -range; i <= range; i += step)
                 {
                     var x = i;
                     var y = function(i);

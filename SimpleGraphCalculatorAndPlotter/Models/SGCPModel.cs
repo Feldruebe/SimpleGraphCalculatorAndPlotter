@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media.Imaging;
+using SimpleGraphCalculatorAndPlotter.Properties;
 using SimpleGraphCalculatorAndPlotter.ViewModels;
 
 namespace SimpleGraphCalculatorAndPlotter.Models
@@ -9,17 +10,18 @@ namespace SimpleGraphCalculatorAndPlotter.Models
     /// </summary>
     public class SGCPModel : BindableBase, ISGCPModel
     {
-        private ISGCPPlotter plotter;
-        private ISGCPExporter exporter;
-        private Func<string> getFileName;
+        private readonly ISGCPPlotter plotter;
+        private readonly ISGCPExporter exporter;
+        private readonly Func<string> getFileName;
+        private readonly ISGCPRenderer renderer;
+        
         private double a = 1;
         private double b = 1;
         private double c = 0;
         private double d = 0;
-        private double minX = -4;
-        private double maxX = 4;
-        private ISGCPRenderer renderer;
+        private double range = 4;
         private FunctionType functionType;
+        private BitmapSource image;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SGCPModel"/> class.
@@ -30,6 +32,8 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             this.getFileName = getFileName;
             this.exporter = exporter;
             this.plotter = plotter;
+            
+            this.UpdateImage();
         }
 
         /// <summary>
@@ -42,6 +46,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             {
                 if (this.SetField(ref this.functionType, value))
                 {
+                    this.SetSettings();
                     this.UpdateImage();
                 }
             }
@@ -55,6 +60,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             {
                 if (this.SetField(ref this.a, value))
                 {
+                    this.SetSettings();
                     this.UpdateImage();
                 }
             }
@@ -68,6 +74,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             {
                 if (this.SetField(ref this.b, value))
                 {
+                    this.SetSettings();
                     this.UpdateImage();
                 }
             }
@@ -81,6 +88,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             {
                 if (this.SetField(ref this.c, value))
                 {
+                    this.SetSettings();
                     this.UpdateImage();
                 }
             }
@@ -94,18 +102,19 @@ namespace SimpleGraphCalculatorAndPlotter.Models
             {
                 if (this.SetField(ref this.d, value))
                 {
+                    this.SetSettings();
                     this.UpdateImage();
                 }
             }
         }
 
         /// <inheritdoc />
-        public double MinX
+        public double Range
         {
-            get => this.minX;
+            get => this.range;
             set
             {
-                if (this.SetField(ref this.minX, value))
+                if (this.SetField(ref this.range, value))
                 {
                     this.UpdateImage();
                 }
@@ -113,34 +122,55 @@ namespace SimpleGraphCalculatorAndPlotter.Models
         }
 
         /// <inheritdoc />
-        public double MaxX
+        public BitmapSource Image
         {
-            get => this.maxX;
-            set
-            {
-                if (this.SetField(ref this.maxX, value))
-                {
-                    this.UpdateImage();
-                }
-            }
+            get => this.image;
+            set => this.SetField(ref this.image, value);
         }
-
-        /// <inheritdoc />
-        public BitmapImage Image { get; set; }
 
         /// <inheritdoc />
         public void SaveImage()
         {
-            var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.MinX, this.MaxX);
+            var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.Range);
             var fileName = this.getFileName();
             this.exporter.Export(fileName, coordinates);
         }
 
+        /// <summary>
+        /// Initialized the model with the given parameters.
+        /// Does not trigger property changes and should be called only once directly after creatinon.
+        /// </summary>
+        /// <param name="functionType">The function type.</param>
+        /// <param name="a">The parameter a.</param>
+        /// <param name="b">The parameter b.</param>
+        /// <param name="c">The parameter c.</param>
+        /// <param name="d">The parameter d.</param>
+        public void InitializeSettings(FunctionType functionType, double a, double b, double c, double d)
+        {
+            this.functionType = functionType;
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            this.d = d;
+            
+            this.UpdateImage();
+        }
+
         private void UpdateImage()
         {
-            var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.MinX, this.MaxX);
-            var image = this.renderer.Render(coordinates);
-            this.Image = image;
+            var coordinates = this.plotter.Plot(this.FunctionType, this.A, this.B, this.C, this.D, this.Range);
+            var coordinatesDefault = this.plotter.Plot(this.FunctionType, 1, 1, 0, 0, this.Range);
+            var renderedImage = this.renderer.Render(coordinates, coordinatesDefault);
+            this.Image = renderedImage;
+        }
+
+        private void SetSettings()
+        {
+            Settings.Default.FunctionType = (int)this.FunctionType;
+            Settings.Default.A = this.A;
+            Settings.Default.B = this.B;
+            Settings.Default.C = this.C;
+            Settings.Default.D = this.D;
         }
     }
 }

@@ -35,19 +35,14 @@ namespace SimpleGraphCalculatorAndPlotter.Models
         double D { get; set; }
 
         /// <summary>
-        /// Gets or sets the minimum of the x-axis.
+        /// Gets or sets the range.
         /// </summary>
-        double MinX { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum of the x-axis.
-        /// </summary>
-        double MaxX { get; set; }
+        double Range { get; set; }
 
         /// <summary>
         /// Gets or sets the rendered image.
         /// </summary>
-        BitmapImage Image { get; set; }
+        BitmapSource Image { get; set; }
 
         /// <summary>
         /// Saves the image of the currently parametrized function.

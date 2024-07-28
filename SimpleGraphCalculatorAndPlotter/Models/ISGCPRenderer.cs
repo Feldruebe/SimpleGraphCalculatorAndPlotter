@@ -11,6 +11,7 @@ namespace SimpleGraphCalculatorAndPlotter.Models
         /// Renders the given coordinates to a bitmap image.
         /// </summary>
         /// <param name="coordinates">The coordinates to render.</param>
-        BitmapImage Render((double X, double Y)[] coordinates);
+        /// <param name="defaultFunctionCoordinates">The coordinates of the default function.</param>
+        BitmapSource Render((double X, double Y)[] coordinates, (double X, double Y)[] defaultFunctionCoordinates);
     }
 }

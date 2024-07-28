@@ -1,4 +1,5 @@
 ﻿using SimpleGraphCalculatorAndPlotter.Models;
+using SimpleGraphCalculatorAndPlotter.Properties;
 using SimpleGraphCalculatorAndPlotter.ViewModels;
 
 namespace SimpleGraphCalculatorAndPlotter
@@ -14,7 +15,10 @@ namespace SimpleGraphCalculatorAndPlotter
         public MainWindow()
         {
             this.InitializeComponent();
-            this.DataContext = new SGCPViewModel(new SGCPModel(new SGCPPlotter(), new SGCPRenderer(),new SGCPExporter(), null));
+            var model = new SGCPModel(new SGCPPlotter(), new SGCPRenderer(), new SGCPExporter(), null);
+            model.InitializeSettings((FunctionType)Settings.Default.FunctionType, Settings.Default.A, Settings.Default.B, Settings.Default.C, Settings.Default.D);
+            
+            this.DataContext = new SGCPViewModel(model);
         }
     }
 }
