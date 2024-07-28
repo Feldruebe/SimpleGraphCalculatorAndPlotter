@@ -1,3 +1,10 @@
+# Introduction
+This is the requirement analysis for "SIMPLE GRAPH CALCULATOR AND PLOTTER".
+
+Next to it, you can find the source code of a simple implementation of this requirement.
+
+---
+
 # Request
 [Software Plotter](Task_Software_Plotter.pdf)
 
